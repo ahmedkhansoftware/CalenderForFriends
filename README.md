@@ -16,7 +16,7 @@ This application will be a Calendar for Friends.
 * Javascript 
 * React JS
 
-# Additional Tech and Tools: 
+# Additional Tech / Tools: 
 
 * Auth0 (For Authentication and Authorization)
 * Azure Web Apps (Deployment and Cloud)
@@ -24,6 +24,6 @@ This application will be a Calendar for Friends.
 
 # About Me
 
-I work as a full time software developer and student. I am Aspiring to be a .NET Developer.  
+I work as a software developer and student. I am Aspiring to become a better .NET Developer.  
 
 Contact me at [Ahmed Khan's LinkedIn Profile](https://www.linkedin.com/in/ahmedkhansoftware/) and checkout  [Ahmed Khan's GitHub Profile](https://github.com/ahmedkhansoftware).

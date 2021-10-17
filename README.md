@@ -2,6 +2,11 @@
 
 This application will be a Calendar for Friends. 
 
+# Playground Projects
+
+* [PlaygroundForPoco](PlaygroundForPoco)
+* [PlaygroundForEFCoreSQLite](PlaygroundForEFCoreSQLite)
+
 # Backend Tech:
 
 * C#

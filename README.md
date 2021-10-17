@@ -4,6 +4,12 @@ This application will be a Calendar for Friends.
 
 # Playground Projects
 
+The Playground Projects will eventually be used for the final Calender for Friends product.
+
+This is just a tool for me to break down the project into more workable and manageable parts.
+
+If interested checkout the current progress made on the Playground Projects down below.
+
 * [PlaygroundForPoco](PlaygroundForPoco)
 * [PlaygroundForEFCoreSQLite](PlaygroundForEFCoreSQLite)
 

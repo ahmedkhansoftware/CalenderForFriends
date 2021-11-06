@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaygroundForEFCoreSQLite", "PlaygroundForEFCoreSQLite\PlaygroundForEFCoreSQLite.csproj", "{0286F208-6006-44F7-BDC4-EE965C75EC04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaygroundForEFCoreSQLite", "PlaygroundForEFCoreSQLite\PlaygroundForEFCoreSQLite.csproj", "{0286F208-6006-44F7-BDC4-EE965C75EC04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticeLibrary", "PracticeLibrary\PracticeLibrary.csproj", "{7DBD08FB-CB64-49CA-BF94-2B85A1FE69E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0286F208-6006-44F7-BDC4-EE965C75EC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0286F208-6006-44F7-BDC4-EE965C75EC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0286F208-6006-44F7-BDC4-EE965C75EC04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DBD08FB-CB64-49CA-BF94-2B85A1FE69E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DBD08FB-CB64-49CA-BF94-2B85A1FE69E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DBD08FB-CB64-49CA-BF94-2B85A1FE69E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DBD08FB-CB64-49CA-BF94-2B85A1FE69E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

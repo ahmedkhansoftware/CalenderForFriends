@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlaygroundForPoco.Helpers;
+using System;
 
 namespace PlaygroundForPoco
 {
@@ -6,7 +7,6 @@ namespace PlaygroundForPoco
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }

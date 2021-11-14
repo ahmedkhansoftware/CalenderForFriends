@@ -10,6 +10,7 @@ This is just a tool for me to break down the project into more workable and mana
 
 If interested checkout the current progress made on the Playground Projects down below.
 
+* [PlaygroundAPI](PlaygroundAPI)
 * [PlaygroundForPoco](PlaygroundForPoco)
 * [PlaygroundForEFCoreSQLite](PlaygroundForEFCoreSQLite)
 
@@ -20,18 +21,19 @@ If interested checkout the current progress made on the Playground Projects down
 * Web API
 * MVC
 * EF Core With SQLite
-
-# Frontend Tech:
-
-* Responsive Web Design (HTML, CSS, Bootstrap)
-* Javascript 
-* React JS
+* SwaggerUI
+* Postman 
 
 # Additional Tech / Tools: 
 
-* Auth0 (For Authentication and Authorization)
 * Azure Web Apps (Deployment and Cloud)
 * Github / Git (Version Control)
+
+# If Time Permits: 
+* Responsive Web Design (HTML, CSS, Bootstrap)
+* Javascript 
+* React JS
+* Auth0 (For Authentication and Authorization)
 
 # About Me
 

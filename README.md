@@ -2,6 +2,8 @@
 
 This application will be a Calendar for Friends. 
 
+* [CalenderForFriends](CalenderForFriends)
+
 # Playground Projects
 
 The Playground Projects will eventually be used for the final Calender for Friends product.
@@ -23,6 +25,7 @@ If interested checkout the current progress made on the Playground Projects down
 * EF Core With SQLite
 * SwaggerUI
 * Postman 
+* DTO (Data Transfer Objects)
 
 # Additional Tech / Tools: 
 

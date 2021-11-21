@@ -1,0 +1,4 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "CalenderForFriends/bin/Release/net5.0/publish"
+}

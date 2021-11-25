@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace CalenderForFriends.Dto
 {
-    public class BaseIdDto
+    public class LoginResponseDto
     {
-        public long Number { get; set;}
-        public string RandomId { get; set; }
+        public string LoginId { get; set; }
     }
 }

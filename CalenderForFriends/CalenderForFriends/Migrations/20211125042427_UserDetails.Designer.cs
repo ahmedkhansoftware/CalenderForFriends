@@ -3,31 +3,20 @@ using System;
 using CalenderForFriends.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CalenderForFriends.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    partial class TodoContextModelSnapshot : ModelSnapshot
+    [Migration("20211125042427_UserDetails")]
+    partial class UserDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.12");
-
-            modelBuilder.Entity("CalenderForFriends.Models.Event", b =>
-                {
-                    b.Property<string>("EventId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LoginId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("EventId");
-
-                    b.ToTable("Events");
-                });
 
             modelBuilder.Entity("CalenderForFriends.Models.TodoItem", b =>
                 {
@@ -69,24 +58,7 @@ namespace CalenderForFriends.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("CalenderForFriends.Models.UserDetails", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EmailAddress")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LoginId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserDetails");
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

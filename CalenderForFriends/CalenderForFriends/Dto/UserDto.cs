@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CalenderForFriends.Dto
 {
-    public class UserDto : BaseIdDto
+    public class UserDto
     {
         public string Name { get; set; }
         public DateTime Bday { get; set; }

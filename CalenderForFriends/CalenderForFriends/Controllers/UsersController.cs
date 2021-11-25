@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CalenderForFriends.DatabaseContext;
 using CalenderForFriends.Models;
 using CalenderForFriends.Dto;
+using CalenderForFriends.Helpers;
 
 namespace CalenderForFriends.Controllers
 {
@@ -22,130 +23,88 @@ namespace CalenderForFriends.Controllers
             _context = context;
         }
 
-        // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
-        {
-            var listOfUsers = await _context.Users.ToListAsync();
-            var response = new List<UserDto>();
-            for (int i = 0; i < listOfUsers.Count; i++)
-            {
-                var userDto = new UserDto();
-                userDto.Name = listOfUsers[i].FullName;
-                userDto.Phone = listOfUsers[i].PhoneNumber;
-                userDto.Bday = listOfUsers[i].BirthDate;
-                userDto.Email = listOfUsers[i].EmailAddress;
-                userDto.Number = listOfUsers[i].Id;
-                userDto.RandomId = listOfUsers[i].Guid;
-                response.Add(userDto);
-            }
-            return response;
-        }
-
-        // GET: api/Users/5
-        [HttpGet("{Number}")]
-        public async Task<ActionResult<UserDto>> GetUser(long Number)
-        {
-            var user = await _context.Users.FindAsync(Number);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            var response = new UserDto();
-
-            response.Number = user.Id;
-            response.RandomId = user.Guid;
-            response.Name = user.FullName;
-            response.Phone = user.PhoneNumber;
-            response.Bday = user.BirthDate;
-            response.Email = user.EmailAddress;
-
-            return response;
-        }
-
-        // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{Number}")]
-        public async Task<IActionResult> PutUser(long Number, UserDto userDto)
-        {
-            if (Number != userDto.Number)
-            {
-                return BadRequest();
-            }
-
-            var user = new User();
-            user.BirthDate = userDto.Bday;
-            user.FullName = userDto.Name;
-            user.EmailAddress = userDto.Email;
-            user.PhoneNumber = userDto.Phone;
-            user.Id = userDto.Number;
-            user.Guid = userDto.RandomId;
-
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(Number))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserDto>> PostUser(UserDto userDto)
+        [Route("CreateEvent")]
+        public async Task<ActionResult<EventDto>> PostEvent(EventCreateDto EventCreateDtos)
         {
+
+            var EventDtoResponse = new EventDto();
+            var IdFound = _context.UserDetails.Select(x => x).Where(x => x.LoginId == EventCreateDtos.LoginId).FirstOrDefault();
+
+            if (IdFound == null)
+            {
+                EventDtoResponse.LoginNumber = "Could not be found.";
+                EventDtoResponse.EventNumber = "Cannot create a Event without a valid Id.";
+                return EventDtoResponse;
+            }
+
+            var EventResponse = new Event();
+            EventResponse.EventId = GenerateEventId.GenerateID();
+            EventResponse.LoginId = EventCreateDtos.LoginId;
+
+            _context.Events.Add(EventResponse);
+            await _context.SaveChangesAsync();
+
+            EventDtoResponse.EventNumber = EventResponse.EventId;
+            EventDtoResponse.LoginNumber = EventResponse.LoginId;
+            return EventDtoResponse;
+        }
+
+        [HttpPost]
+        [Route("CreateUser")]
+        public async Task<ActionResult<LoginResponseDto>> PostUser(UserDto userDto)
+        {
+            var EmailFound = _context.UserDetails.Select(x => x).Where(x => x.EmailAddress == userDto.Email).FirstOrDefault();
+            var LoginResponsedto = new LoginResponseDto();
+
+            if (EmailFound != null)
+            {
+                LoginResponsedto.LoginId = EmailFound.LoginId;
+                return LoginResponsedto;
+            }
+
             var user = new User();
             user.BirthDate = userDto.Bday;
             user.FullName = userDto.Name;
             user.EmailAddress = userDto.Email;
             user.PhoneNumber = userDto.Phone;
-            user.Id = userDto.Number;
-            user.Guid = userDto.RandomId;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { Number = user.Id }, userDto);
+            var UserDetail = new UserDetails();
+
+            UserDetail.EmailAddress = user.EmailAddress;
+            UserDetail.LoginId = GenerateLoginId.GenerateID();
+
+            _context.UserDetails.Add(UserDetail);
+            await _context.SaveChangesAsync();
+
+            LoginResponsedto.LoginId = UserDetail.LoginId;
+
+            return LoginResponsedto;
         }
 
-        // DELETE: api/Users/5
-        [HttpDelete("{Number}")]
-        public async Task<ActionResult<UserDto>> DeleteUser(long Number)
+
+        [HttpDelete]
+        [Route("DeleteEvent")]
+        public ActionResult<EventDto> DeleteEvent(EventDeleteDto EventDeleteDto)
         {
-            var user = await _context.Users.FindAsync(Number);
-            if (user == null)
+            EventDto EventDto = new();
+            var EventFound = _context.Events.Select(x => x).Where(x => x.EventId == EventDeleteDto.EventNumber).ToList().FirstOrDefault();
+
+            if (EventFound == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            _context.Events.Remove(EventFound);
+            _context.SaveChanges();
 
-            var response = new UserDto();
+            EventDto.EventNumber = EventFound.EventId;
+            EventDto.LoginNumber = EventFound.LoginId;
 
-            response.Number = user.Id;
-            response.RandomId = user.Guid;
-            response.Name = user.FullName;
-            response.Phone = user.PhoneNumber;
-            response.Bday = user.BirthDate;
-            response.Email = user.EmailAddress;
-
-            return response;
+            return EventDto;
         }
 
         private bool UserExists(long id)

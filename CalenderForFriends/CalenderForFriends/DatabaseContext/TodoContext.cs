@@ -16,5 +16,7 @@ namespace CalenderForFriends.DatabaseContext
 
         public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserDetails> UserDetails { get; set; }
+        public DbSet<Event> Events { get; set; }
     }
 }

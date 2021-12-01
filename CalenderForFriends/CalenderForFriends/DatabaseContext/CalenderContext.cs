@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace CalenderForFriends.DatabaseContext
 {
-    public class TodoContext : DbContext
+    public class CalenderContext : DbContext
     {
-        public TodoContext(DbContextOptions<TodoContext> options)
+        public CalenderContext(DbContextOptions<CalenderContext> options)
             : base(options)
         {
         }
 
-        public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<EventDetails> EventDetails { get; set; }
+        public DbSet<Invitations> Invitations { get; set; }
     }
 }

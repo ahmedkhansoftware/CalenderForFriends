@@ -1,17 +1,18 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CalenderForFriends.Models
 {
-    public class UserDetails
+    public class Invitations
     {
-        public long Id { get; set; }
+        public int id { get; set; }
 
-        public string LoginId { get; set; }
+        public string EventId { get; set; }
 
         public string EmailAddress { get; set; }
+
+        public string Status { get; set; }
     }
 }

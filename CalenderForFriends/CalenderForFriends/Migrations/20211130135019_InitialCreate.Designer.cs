@@ -3,14 +3,16 @@ using System;
 using CalenderForFriends.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CalenderForFriends.Migrations
 {
-    [DbContext(typeof(TodoContext))]
-    partial class TodoContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CalenderContext))]
+    [Migration("20211130135019_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace CalenderForFriends.Migrations
                     b.Property<string>("EventId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("LoginId")
+                    b.Property<string>("EmailAddress")
                         .HasColumnType("TEXT");
 
                     b.HasKey("EventId");
@@ -29,21 +31,47 @@ namespace CalenderForFriends.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("CalenderForFriends.Models.TodoItem", b =>
+            modelBuilder.Entity("CalenderForFriends.Models.EventDetails", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsComplete")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("EventId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EventTitle")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Summary")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("TodoItems");
+                    b.ToTable("EventDetails");
+                });
+
+            modelBuilder.Entity("CalenderForFriends.Models.Invitations", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EventId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Invitations");
                 });
 
             modelBuilder.Entity("CalenderForFriends.Models.User", b =>
@@ -61,7 +89,7 @@ namespace CalenderForFriends.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Guid")
+                    b.Property<string>("Password")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
@@ -70,23 +98,6 @@ namespace CalenderForFriends.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("CalenderForFriends.Models.UserDetails", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EmailAddress")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LoginId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserDetails");
                 });
 #pragma warning restore 612, 618
         }

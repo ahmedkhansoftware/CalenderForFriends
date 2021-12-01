@@ -7,6 +7,6 @@ namespace CalenderForFriends.Dto
 {
     public class LoginResponseDto
     {
-        public string LoginId { get; set; }
+        public string EmailToLogin { get; set; }
     }
 }

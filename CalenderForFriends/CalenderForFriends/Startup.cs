@@ -28,7 +28,7 @@ namespace CalenderForFriends
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(options => options.UseSqlite(Configuration["SqliteConnectionString"]));
+            services.AddDbContext<CalenderContext>(options => options.UseSqlite(Configuration["SqliteConnectionString"]));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -66,7 +66,7 @@ namespace CalenderForFriends
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 // get your database context of the current app
-                using (var context = serviceScope.ServiceProvider.GetService<TodoContext>())
+                using (var context = serviceScope.ServiceProvider.GetService<CalenderContext>())
                 {
                     // Call the migrate of the database provider to
                     // apply all data migrations pending

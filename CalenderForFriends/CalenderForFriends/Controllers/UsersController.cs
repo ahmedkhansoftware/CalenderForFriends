@@ -16,95 +16,39 @@ namespace CalenderForFriends.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly CalenderContext _context;
 
-        public UsersController(TodoContext context)
+        public UsersController(CalenderContext context)
         {
             _context = context;
-        }
-
-        [HttpPost]
-        [Route("CreateEvent")]
-        public async Task<ActionResult<EventDto>> PostEvent(EventCreateDto EventCreateDtos)
-        {
-
-            var EventDtoResponse = new EventDto();
-            var IdFound = _context.UserDetails.Select(x => x).Where(x => x.LoginId == EventCreateDtos.LoginId).FirstOrDefault();
-
-            if (IdFound == null)
-            {
-                EventDtoResponse.LoginNumber = "Could not be found.";
-                EventDtoResponse.EventNumber = "Cannot create a Event without a valid Id.";
-                return EventDtoResponse;
-            }
-
-            var EventResponse = new Event();
-            EventResponse.EventId = GenerateEventId.GenerateID();
-            EventResponse.LoginId = EventCreateDtos.LoginId;
-
-            _context.Events.Add(EventResponse);
-            await _context.SaveChangesAsync();
-
-            EventDtoResponse.EventNumber = EventResponse.EventId;
-            EventDtoResponse.LoginNumber = EventResponse.LoginId;
-            return EventDtoResponse;
         }
 
         [HttpPost]
         [Route("CreateUser")]
         public async Task<ActionResult<LoginResponseDto>> PostUser(UserDto userDto)
         {
-            var EmailFound = _context.UserDetails.Select(x => x).Where(x => x.EmailAddress == userDto.Email).FirstOrDefault();
+            var EmailFound = _context.Users.Select(x => x).Where(x => x.EmailAddress == userDto.Email).FirstOrDefault();
             var LoginResponsedto = new LoginResponseDto();
 
             if (EmailFound != null)
             {
-                LoginResponsedto.LoginId = EmailFound.LoginId;
+                LoginResponsedto.EmailToLogin = EmailFound.EmailAddress;
                 return LoginResponsedto;
             }
 
             var user = new User();
-            user.BirthDate = userDto.Bday;
+            user.BirthDate = userDto.BirthDay;
             user.FullName = userDto.Name;
             user.EmailAddress = userDto.Email;
             user.PhoneNumber = userDto.Phone;
+            user.Password = userDto.Password;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            var UserDetail = new UserDetails();
-
-            UserDetail.EmailAddress = user.EmailAddress;
-            UserDetail.LoginId = GenerateLoginId.GenerateID();
-
-            _context.UserDetails.Add(UserDetail);
-            await _context.SaveChangesAsync();
-
-            LoginResponsedto.LoginId = UserDetail.LoginId;
+            LoginResponsedto.EmailToLogin = user.EmailAddress;
 
             return LoginResponsedto;
-        }
-
-
-        [HttpDelete]
-        [Route("DeleteEvent")]
-        public ActionResult<EventDto> DeleteEvent(EventDeleteDto EventDeleteDto)
-        {
-            EventDto EventDto = new();
-            var EventFound = _context.Events.Select(x => x).Where(x => x.EventId == EventDeleteDto.EventNumber).ToList().FirstOrDefault();
-
-            if (EventFound == null)
-            {
-                return NotFound();
-            }
-
-            _context.Events.Remove(EventFound);
-            _context.SaveChanges();
-
-            EventDto.EventNumber = EventFound.EventId;
-            EventDto.LoginNumber = EventFound.LoginId;
-
-            return EventDto;
         }
 
         private bool UserExists(long id)

@@ -8,6 +8,6 @@ namespace CalenderForFriends.Models
     public class Event
     {
         public string EventId { get; set; }
-        public string LoginId { get; set; }
+        public string EmailAddress { get; set; }
     }
 }

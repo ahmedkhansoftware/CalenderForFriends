@@ -7,6 +7,7 @@ namespace CalenderForFriends.Dto
 {
     public class EventCreateDto
     {
-        public string LoginId { get; set; }
+        public string LoginEmailAddress { get; set; }
+        public string Password { get; set; }
     }
 }

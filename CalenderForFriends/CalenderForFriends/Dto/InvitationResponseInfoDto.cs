@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace CalenderForFriends.Dto
 {
-    public class EventDto
+    public class InvitationResponseInfoDto
     {
-        public string EventNumber { get; set; }
+        public string EventId { get; set; }
         public string EmailAddress { get; set; }
+        public string Password { get; set; }
+        public bool Response { get; set; }
     }
 }

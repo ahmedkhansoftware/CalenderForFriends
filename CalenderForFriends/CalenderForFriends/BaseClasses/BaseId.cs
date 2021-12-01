@@ -11,6 +11,5 @@ namespace CalenderForFriends.BaseClasses
     public class BaseId
     {
         public long Id { get; set; }
-        public string Guid { get; set; }
     }
 }

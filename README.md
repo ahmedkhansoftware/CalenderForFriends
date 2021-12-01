@@ -20,7 +20,7 @@ If interested checkout the current progress made on the Playground Projects down
 # Backend Tech:
 
 * C#
-* .NET Core 5 
+* .NET 5 
 * Web API
 * MVC
 * EF Core With SQLite
@@ -33,11 +33,10 @@ If interested checkout the current progress made on the Playground Projects down
 * Azure Web Apps (Deployment and Cloud)
 * Github / Git (Version Control)
 
-# If Time Permits: 
+# Next Steps: 
 * Responsive Web Design (HTML, CSS, Bootstrap)
 * Javascript 
 * React JS
-* Auth0 (For Authentication and Authorization)
 
 # About Me
 

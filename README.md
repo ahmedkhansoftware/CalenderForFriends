@@ -3,6 +3,7 @@
 This application will be a Calendar for Friends. 
 
 * [CalenderForFriends](CalenderForFriends)
+* [Live API](https://calenderforfriends.azurewebsites.net/swagger/index.html) - Check out the live site for this project
 
 # Playground Projects
 

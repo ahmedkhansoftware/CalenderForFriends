@@ -3,7 +3,6 @@
 This application will be a Calendar for Friends. 
 
 * [CalenderForFriends](CalenderForFriends)
-* [Live API](https://calenderforfriends.azurewebsites.net/swagger/index.html) - Check out the live site for this project
 
 # Playground Projects
 
@@ -20,7 +19,7 @@ If interested checkout the current progress made on the Playground Projects down
 # Backend Tech:
 
 * C#
-* .NET 5 
+* .NET Core 5 
 * Web API
 * MVC
 * EF Core With SQLite
@@ -33,10 +32,11 @@ If interested checkout the current progress made on the Playground Projects down
 * Azure Web Apps (Deployment and Cloud)
 * Github / Git (Version Control)
 
-# Next Steps: 
+# If Time Permits: 
 * Responsive Web Design (HTML, CSS, Bootstrap)
 * Javascript 
 * React JS
+* Auth0 (For Authentication and Authorization)
 
 # About Me
 

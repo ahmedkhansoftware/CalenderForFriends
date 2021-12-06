@@ -71,6 +71,21 @@ namespace CalenderForFriends.Controllers
             }
 
             _context.Events.Remove(EventFound);
+
+            var EventDetailsFound = _context.EventDetails.Select(x => x).Where(x => x.EventId == EventDeleteDto.EventNumber).ToList();
+            var InvitationFound = _context.Invitations.Select(x => x).Where(x => x.EventId == EventDeleteDto.EventNumber).ToList();
+
+            foreach (var Event in EventDetailsFound) {
+                _context.EventDetails.Remove(Event);
+                _context.SaveChanges();
+            }
+
+            foreach (var Invite in InvitationFound)
+            {
+                _context.Invitations.Remove(Invite);
+                _context.SaveChanges();
+            }
+
             _context.SaveChanges();
 
             EventDto EventDto = new();

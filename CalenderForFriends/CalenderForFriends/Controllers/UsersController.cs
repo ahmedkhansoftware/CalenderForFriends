@@ -36,6 +36,16 @@ namespace CalenderForFriends.Controllers
                 return LoginResponsedto;
             }
 
+            if (EmailFound.EmailAddress == null)
+            {
+                return NotFound();
+            }
+
+            if(EmailFound.EmailAddress.Count() == 0)
+            {
+                return NotFound();
+            }
+
             var user = new User();
             user.BirthDate = userDto.BirthDay;
             user.FullName = userDto.Name;

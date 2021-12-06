@@ -10,6 +10,6 @@ namespace CalenderForFriends.BaseClasses
     // Needed because copy and pasting Id's would be not proper design.
     public class BaseId
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
     }
 }

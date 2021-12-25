@@ -4,17 +4,7 @@ This application will be a Calendar for Friends.
 
 * [CalenderForFriends](CalenderForFriends)
 
-# Playground Projects
-
-The Playground Projects will eventually be used for the final Calender for Friends product.
-
-This is just a tool for me to break down the project into more workable and manageable parts.
-
-If interested checkout the current progress made on the Playground Projects down below.
-
-* [PlaygroundAPI](PlaygroundAPI)
-* [PlaygroundForPoco](PlaygroundForPoco)
-* [PlaygroundForEFCoreSQLite](PlaygroundForEFCoreSQLite)
+* [Live Site](https://calenderforfriends.azurewebsites.net/swagger/index.html) - Check out the live site for this project
 
 # Backend Tech:
 

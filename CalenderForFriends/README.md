@@ -1,4 +1,4 @@
-# PlaygroundAPI
+# CalenderForFriends
 
 This application will be a Calender For Friends Web API.
 

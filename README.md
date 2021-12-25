@@ -1,6 +1,6 @@
 # CalenderForFriends
 
-This application will be a Calendar for Friends. 
+This application is a Calendar for Friends API.
 
 * [CalenderForFriends](CalenderForFriends)
 

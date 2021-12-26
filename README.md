@@ -22,12 +22,6 @@ This application is a Calendar for Friends API.
 * Azure Web Apps (Deployment and Cloud)
 * Github / Git (Version Control)
 
-# If Time Permits: 
-* Responsive Web Design (HTML, CSS, Bootstrap)
-* Javascript 
-* React JS
-* Auth0 (For Authentication and Authorization)
-
 # About Me
 
 I work as a software developer and student. I am Aspiring to become a better .NET Developer.  
